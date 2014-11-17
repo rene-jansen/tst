@@ -1,0 +1,30 @@
+﻿body {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.navbar-brand {
+   padding-top: 5px;
+}
+
+.navbar-collapse {
+   float: left;
+}
+
+.navbar-logo {
+   float: left;
+}
