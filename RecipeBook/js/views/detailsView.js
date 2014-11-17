@@ -1,7 +1,19 @@
-﻿define(['jquery', 'underscore', 'backbone', 'views/editView', 'routers/router', 'components/dataService'],
-function ($, _, Backbone, EditView, Router, dataService) {
-    var detailsView = Backbone.View.extend({
-        template: _.template($('#details-template').html()),
+﻿define(function (require) {
+
+    "use strict";
+
+    var $                   = require('jquery'),
+        _                   = require('underscore'),
+        Backbone            = require('backbone'),
+        EditView            = require('views/editView'),
+        Router              = require('routers/router'),
+        dataService         = require('components/dataService'),
+        tpl                 = require('text!tpl/RecipeDetails.html');
+
+
+
+    return Backbone.View.extend({
+        template: _.template(tpl),        
         tagName: 'div',
         events: {
             'click #btnEditRecipe': 'editRecipe',
@@ -52,5 +64,5 @@ function ($, _, Backbone, EditView, Router, dataService) {
             this.render();
         }
     });
-    return detailsView;
+     
 });

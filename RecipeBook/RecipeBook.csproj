@@ -119,6 +119,7 @@
     <Content Include="js\lib\underscore.js" />
     <Content Include="js\models\recipe.js" />
     <Content Include="js\routers\router.js" />
+    <Content Include="js\tpl\RecipeDetails.html" />
     <Content Include="js\tpl\RecipeTile.html" />
     <Content Include="js\views\recipeTileView.js" />
     <Content Include="js\views\createView.js" />
