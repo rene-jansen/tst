@@ -1,8 +1,18 @@
-﻿define(['jquery', 'underscore', 'backbone', 'views/editView', 'routers/router', 'components/dataService'],
-function ($, _, Backbone, editView, Router, dataService) {
-    var editView = Backbone.View.extend({
+﻿define(function (require) {
+
+    "use strict";
+
+    var $                   = require('jquery'),
+        _                   = require('underscore'),
+        Backbone            = require('backbone'),
+        EditView            = require('views/editView'),
+        Router              = require('routers/router'),
+        dataService         = require('components/dataService'),
+        tpl                 = require('text!tpl/RecipeEdit.html');
+
+    return Backbone.View.extend({
         name: 'editView',
-        template: _.template($('#edit-template').html()),
+        template: _.template(tpl),          
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
@@ -15,10 +25,8 @@ function ($, _, Backbone, editView, Router, dataService) {
             event.preventDefault();
             var r = '#/details/' + this.model.id;
             if (this.model.set(this.getCurrentFormValues(), { validate: true })) {
-                dataService.saveData(app.recipes);
-                
-                Router.navigate(r, { trigger: true });
-                //this.hideModal();
+                dataService.saveData(app.recipes);                
+                Router.navigate(r, { trigger: true });                
             }
             else {
                 $('#validationError').text(this.model.validationError);
@@ -45,5 +53,5 @@ function ($, _, Backbone, editView, Router, dataService) {
             };
         }
     });
-    return editView;
+    
 });

@@ -10,8 +10,6 @@
         dataService         = require('components/dataService'),
         tpl                 = require('text!tpl/RecipeDetails.html');
 
-
-
     return Backbone.View.extend({
         template: _.template(tpl),        
         tagName: 'div',
