@@ -1,11 +1,4 @@
-﻿/*
-define(['jquery', 'underscore', 'backbone', 'require'], function ($, _, Backbone, require) {
-
-    var tpl = require('text!tpl/Home.html'),
-
-        template = _.template(tpl);
-        */
-define(function (require) {
+﻿define(function (require) {
 
     "use strict";
 
