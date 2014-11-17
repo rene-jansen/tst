@@ -1,7 +1,17 @@
-﻿define(['jquery', 'underscore', 'backbone', 'models/recipe', 'routers/router', 'components/dataService'],
-function ($, _, Backbone, Recipe, Router, dataService) {
-    var createView = Backbone.View.extend({
-        template: _.template($('#create-template').html()),
+﻿define(function (require) {
+
+    "use strict";
+
+    var $                   = require('jquery'),
+        _                   = require('underscore'),
+        Backbone            = require('backbone'),      
+        Recipe              = require('models/recipe'),
+        Router              = require('routers/router'),
+        dataService         = require('components/dataService'),
+        tpl                 = require('text!tpl/RecipeCreate.html');
+
+    return Backbone.View.extend({
+        template: _.template(tpl),
         tagName: 'div',
         initialize: function () {
             this.model = new Recipe();
@@ -73,6 +83,6 @@ function ($, _, Backbone, Recipe, Router, dataService) {
             };
         }
     });
-    return createView;
+    
 });
 

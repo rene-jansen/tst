@@ -4,8 +4,7 @@
 
     var $                   = require('jquery'),
         _                   = require('underscore'),
-        Backbone            = require('backbone'),
-        EditView            = require('views/editView'),
+        Backbone            = require('backbone'),        
         Router              = require('routers/router'),
         dataService         = require('components/dataService'),
         tpl                 = require('text!tpl/RecipeEdit.html');
