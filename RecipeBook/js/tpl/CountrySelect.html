@@ -1,0 +1,14 @@
+﻿<div class="list-group">
+    <% _.each(countries, function(country) { %>
+    
+    
+
+    <a id="<%- country.countryID %>" href="#/country/<%- country.countryID %>" class="list-group-item">
+
+        <img src="<%- country.imagePath %>" class="place-left" id="<%- country.countryID %>" alt="Country Image" />
+        <%- country.country %><br />
+
+    </a>
+    <% }); %>
+</div>
+

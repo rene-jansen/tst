@@ -4,7 +4,9 @@ AppController) {
         routes: {
             '': 'home',
             'details/:id': 'details',
-            'createRecipe': 'createRecipe'
+            'createRecipe': 'createRecipe',
+            'selectcountry': 'selectcountry',
+            'country/:id': 'country'
         },
         initialize: function () {
             var routeName;

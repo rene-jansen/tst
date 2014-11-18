@@ -88,6 +88,7 @@
     <Content Include="img\Completed.png" />
     <Content Include="img\edit.png" />
     <Content Include="img\germany.png" />
+    <Content Include="img\Iconshock-Cook-Cheff.ico" />
     <Content Include="img\italy.png" />
     <Content Include="img\JamesBondImage.png" />
     <Content Include="img\japan.png" />
@@ -106,7 +107,7 @@
     <Content Include="index.html" />
     <Content Include="js\app.js" />
     <Content Include="js\collections\recipes.js" />
-    <Content Include="js\collections\tasks.js" />
+    <Content Include="js\collections\countries.js" />
     <Content Include="js\components\appController.js" />
     <Content Include="js\components\dataService.js" />
     <Content Include="js\lib\backbone.js" />
@@ -117,12 +118,18 @@
     <Content Include="js\lib\require.js" />
     <Content Include="js\lib\text.js" />
     <Content Include="js\lib\underscore.js" />
+    <Content Include="js\models\header.js" />
+    <Content Include="js\models\country.js" />
     <Content Include="js\models\recipe.js" />
     <Content Include="js\routers\router.js" />
+    <Content Include="js\tpl\HeaderView.html" />
     <Content Include="js\tpl\RecipeCreate.html" />
     <Content Include="js\tpl\RecipeDetails.html" />
+    <Content Include="js\tpl\CountrySelect.html" />
     <Content Include="js\tpl\RecipeEdit.html" />
     <Content Include="js\tpl\RecipeTile.html" />
+    <Content Include="js\views\countryView.js" />
+    <Content Include="js\views\headerView.js" />
     <Content Include="js\views\recipeTileView.js" />
     <Content Include="js\views\createView.js" />
     <Content Include="js\views\detailsView.js" />
