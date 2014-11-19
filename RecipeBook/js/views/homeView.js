@@ -7,7 +7,7 @@
         },
         render: function() {
             this.$el.empty();
-
+            this.collection = app.recipes;
             $(this.el).html('<div class="list-group"></div>');
 
             this.collection.each(function(item) {

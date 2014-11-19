@@ -1,4 +1,4 @@
-﻿define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
+﻿define(['jquery', 'underscore', 'backbone', 'models/header', 'models/country', 'components/dataService'], function ($, _, Backbone, Header, Country, dataService) {
     var AppController = {
         currentView: null,
         home: function() {
@@ -26,12 +26,12 @@
         },
         country: function (id) {
             var self = this;
+            var country = new Country(app.countries.get(id));
+            var countryJ = country.toJSON();
 
-            require(['views/homeView'], function (HomeView) {
-                var country = app.countries.get(id),
-                view = new HomeView({ model: country });
-                self.renderView.call(self, view);
-            });
+            app.header = new Header({ country: countryJ.get('country'), imagePath: countryJ.get('imagePath') });
+            dataService.setRecipes();
+            self.home();
         },
         renderView: function(view) {
             this.currentView && this.currentView.remove();

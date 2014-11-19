@@ -18,8 +18,62 @@
             generateInitialRecipeData();
             recipesString = localStorage.getItem("recipes");
         }
-        return JSON.parse(recipesString);
+
+        var abc = app.header.get('country');
+
+        var items = JSON.parse(recipesString).filter(function (item) { return item.country === abc });
+        /*
+        var json = JSON.parse(recipesString);
+        var items = json.filter(function (item) {
+            if (item.country === 'Italy') {
+                return item;
+            }
+        });
+
+
+        var yahooOnly = JSON.parse(recipesString).filter(recipe) {
+            return recipe.country === 'Italy';
+        } 
+        $.each(JSON.parse(recipesString), function (idx, obj) {
+            if (obj.country === 'Italy') {
+                // do whatever you want
+                var x = 'x';
+            }
+        }); 
+        */
+
+        return items; //JSON.parse(recipesString);
     }
+
+    function setRecipes() {
+        var recipesString = localStorage.getItem("recipes");
+
+        var abc = app.header.get('country');
+
+        var items = JSON.parse(recipesString).filter(function (item) { return item.country === abc });
+        /*
+        var json = JSON.parse(recipesString);
+        var items = json.filter(function (item) {
+            if (item.country === 'Italy') {
+                return item;
+            }
+        });
+
+
+        var yahooOnly = JSON.parse(recipesString).filter(recipe) {
+            return recipe.country === 'Italy';
+        } 
+        $.each(JSON.parse(recipesString), function (idx, obj) {
+            if (obj.country === 'Italy') {
+                // do whatever you want
+                var x = 'x';
+            }
+        }); 
+        */
+        app.recipes = new Recipes(items);
+        //return items; //JSON.parse(recipesString);
+    }
+
 
     function generateInitialRecipeData() {
         var recipes = [
@@ -36,6 +90,7 @@
     }    
 
     function getCountriesFromCache() {
+        generateInitialCountryData();
         var countriesString = localStorage.getItem("countries");
         if (!countriesString) {
             generateInitialCountryData();
@@ -49,7 +104,8 @@
             { id: 1, countryID: 1, country: 'Australia', imagePath: 'img/australia.png' },
             { id: 2, countryID: 2, country: 'Brazil', imagePath: 'img/brazil.png' },
             { id: 3, countryID: 3, country: 'China', imagePath: 'img/china.png' },
-            { id: 4, countryID: 4, country: 'Germany', imagePath: 'img/germany.png' }
+            { id: 4, countryID: 4, country: 'Germany', imagePath: 'img/germany.png' },
+            { id: 5, countryID: 5, country: 'Italy', imagePath: 'img/italy.png' }
         ];
         localStorage.setItem("countries", JSON.stringify(countries));
     }
@@ -57,18 +113,22 @@
 
     var DataService = {
         getData: function () {
-            var recipes = getRecipesFromCache(),
-                countries = getCountriesFromCache(),
-                header = { title: 'XXX', country: 'Australia', imagePath: 'img/australia.png' };
+            var header = { title: 'XXX', country: 'Australia', imagePath: 'img/australia.png' };
+            app.header = new Header(header);
+
+            var countries = getCountriesFromCache(),
+                recipes = getRecipesFromCache();
 
             // will be used as our client side models storage
             app.recipes = new Recipes(recipes);
-            app.countries = new Countries(countries);
-            app.header = new Header(header);
+            app.countries = new Countries(countries);            
 
             setMaxRecipeID(recipes);
             setMaxCountryID(countries);
             
+        },
+        setRecipes: function () {
+            setRecipes();
         },
         saveData: function (recipes) {
             localStorage.setItem("recipes", JSON.stringify(recipes.toJSON()));
