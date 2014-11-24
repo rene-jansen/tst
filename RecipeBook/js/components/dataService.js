@@ -109,11 +109,20 @@
         ];
         localStorage.setItem("countries", JSON.stringify(countries));
     }
+    function setTitle(title, backButton, action) {
 
+        var h = app.header;
+        var header = { title: title, country: h.get('country'), imagePath: h.get('imagePath'), backButton: backButton, backButtonAction: action };
+        app.header = new Header(header);
+
+        
+        //h.set('title') = title;
+        //app.header = h;
+    }
 
     var DataService = {
         getData: function () {
-            var header = { title: 'XXX', country: 'Australia', imagePath: 'img/australia.png' };
+            var header = { country: 'Australia', imagePath: 'img/australia.png' };
             app.header = new Header(header);
 
             var countries = getCountriesFromCache(),
@@ -129,6 +138,9 @@
         },
         setRecipes: function () {
             setRecipes();
+        },
+        setTitle: function (title, back, action) {
+            setTitle(title, back, action);
         },
         saveData: function (recipes) {
             localStorage.setItem("recipes", JSON.stringify(recipes.toJSON()));

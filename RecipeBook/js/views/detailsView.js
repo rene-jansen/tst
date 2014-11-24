@@ -33,7 +33,7 @@
         },
         editRecipe: function(event) {
             var self = this;
-            var view = new EditView({ model: this.model });            
+            var view = new EditView({ model: this.model, collection: app.countries });            
             self.renderView.call(self, view);
         },
         deleteRecipe: function() {

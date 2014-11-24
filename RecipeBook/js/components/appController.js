@@ -5,7 +5,8 @@
             var self = this;
             require(['views/homeView'], function (HomeView) {
                 //var country = app.countries.get(id),
-                  var  view = new HomeView();
+                var view = new HomeView();
+                dataService.setTitle('CookeNut');
                 self.renderView.call(self, view);
             });
         },
@@ -14,6 +15,9 @@
             require(['views/detailsView'], function (DetailsView) {
                 var recipe = app.recipes.get(id),
                 view = new DetailsView({ model: recipe });
+                
+                dataService.setTitle(recipe.get('name'), 'glyphicon glyphicon-chevron-left', '#/');
+
                 self.renderView.call(self, view);
             });
         },
@@ -26,10 +30,10 @@
         },
         country: function (id) {
             var self = this;
-            var country = new Country(app.countries.get(id));
-            var countryJ = country.toJSON();
-
-            app.header = new Header({ country: countryJ.get('country'), imagePath: countryJ.get('imagePath') });
+            var country = new Country(app.countries.get(id)).toJSON();
+            
+            app.header = new Header({ country: country.get('country'), imagePath: country.get('imagePath') });
+            
             dataService.setRecipes();
             self.home();
         },

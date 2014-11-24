@@ -112,7 +112,7 @@
     <Content Include="js\components\dataService.js" />
     <Content Include="js\lib\backbone.js" />
     <Content Include="js\lib\Backbone.ModalDialog.js" />
-    <Content Include="js\lib\bootstrap.min.js" />
+    <Content Include="js\lib\bootstrap.js" />
     <Content Include="js\lib\jquery.js" />
     <Content Include="js\lib\pouchdb-3.1.0.min.js" />
     <Content Include="js\lib\require.js" />

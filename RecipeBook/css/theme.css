@@ -1,5 +1,5 @@
 ﻿body {
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 30px;
 }
 
@@ -27,4 +27,25 @@
 
 .navbar-logo {
    float: left;
+}
+
+
+
+/* Footer
+    .footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+-------------------------------------------------- */
+.footer {
+  margin-top: 45px;
+  padding: 35px 0 36px;
+  border-top: 1px solid #e5e5e5;
+}
+.footer p {
+  margin-bottom: 0;
+  color: #555;
 }

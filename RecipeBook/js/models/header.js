@@ -3,7 +3,9 @@
         defaults: {
             title: 'CookeNut',
             country: 'Australia',
-            imagePath: ''
+            imagePath: '',
+            backButton: '',
+            backButtonAction: ''
         }
     });    
 });

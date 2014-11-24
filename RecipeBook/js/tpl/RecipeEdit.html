@@ -1,31 +1,42 @@
 ﻿<div class="form-horizontal">
-    <div id="validationError" class="text red"></div>
+
+    <div id="validationError"  role="alert"></div>
+
+    
 
     <div class="form-group">
         <div class="col-xs-6 col-md-8">
-            <input type="text" placeholder="Name" title="Name" class="form-control" id="name" name="name" value="<%- name %>" />
+            <input type="text" placeholder="Name" title="Name" class="form-control" id="name" name="name" value="<%- model.name %>" />
         </div>
         <div class="col-xs-3 col-md-2">
-            <input type="text" placeholder="Country" title="Country" class="form-control" id="country" name="country" value="<%- country %>" />
+            
+            <select class="form-control" id="model.country" name="model.country">
+                <option selected="selected" value="1">Australia</option>
+
+                <% _(countries).each(function(country) { %>
+                <option value="<%= country.country %>"><%= country.country %></option>
+                <% }); %>
+            </select>
+
         </div>
         <div class="col-xs-3 col-md-2">
-            <input type="text" placeholder="Category" title="Category" class="form-control" id="category" name="category" value="<%- category %>" />
+            <input type="text" placeholder="Category" title="Category" class="form-control" id="category" name="category" value="<%- model.category %>" />
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-xs-12">
-            <textarea placeholder="Description" title="Description" class="form-control" cols="185" id="description" name="description" rows="4"><%- description %></textarea>
+            <textarea placeholder="Description" title="Description" class="form-control" cols="185" id="description" name="description" rows="4"><%- model.description %></textarea>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-xs-6">
-            <textarea placeholder="Ingredients" title="Ingredients" class="form-control" id="ingredient1" name="ingredient1" rows="10"><%- ingredient1 %></textarea>
+            <textarea placeholder="Ingredients" title="Ingredients" class="form-control" id="ingredient1" name="ingredient1" rows="10"><%- model.ingredient1 %></textarea>
         </div>
 
         <div class="col-xs-6">
-            <textarea placeholder="Ingredients" title="Ingredients" class="form-control" id="ingredient2" name="ingredient2" rows="10"><%- ingredient2 %></textarea>
+            <textarea placeholder="Ingredients" title="Ingredients" class="form-control" id="ingredient2" name="ingredient2" rows="10"><%- model.ingredient2 %></textarea>
         </div>
 
     </div>
@@ -33,7 +44,7 @@
     <div class="form-group">
 
         <div class="col-xs-12">
-            <textarea placeholder="Production" title="Production" class="form-control" id="production" name="production" rows="18"><%- production %></textarea>
+            <textarea placeholder="Production" title="Production" class="form-control" id="production" name="production" rows="18"><%- model.production %></textarea>
         </div>
     </div>
 
@@ -42,14 +53,14 @@
             <p class="control-label">Author</p>
         </div>
         <div class="col-xs-8 col-md-3">
-            <input type="text" placeholder="Author" title="Author" class="form-control" id="author" name="author" value="<%- author %>" />
+            <input type="text" placeholder="Author" title="Author" class="form-control" id="author" name="author" value="<%- model.author %>" />
         </div>
 
         <div class="col-xs-4 col-md-2">
             <p class="control-label">Source</p>
         </div>
         <div class="col-xs-8 col-md-6">
-            <input type="text" placeholder="Source" title="Source" class="form-control" id="source" name="source" value="<%- source %>" />
+            <input type="text" placeholder="Source" title="Source" class="form-control" id="source" name="source" value="<%- model.source %>" />
         </div>
     </div>
 
@@ -58,30 +69,38 @@
             <p class="control-label">Preparationtime</p>
         </div>
         <div class="col-xs-8 col-md-3">
-            <input type="text" placeholder="Preparation Time" title="Preparation Time" class="form-control" id="preparationtime" name="preparationtime" value="<%- preparationtime %>" />
+            <input type="text" placeholder="Preparation Time" title="Preparation Time" class="form-control" id="preparationtime" name="preparationtime" value="<%- model.preparationtime %>" />
         </div>
 
         <div class="col-xs-4 col-md-2">
             <p class="control-label">Cookingtime</p>
         </div>
         <div class="col-xs-8 col-md-2">
-            <input type="text" placeholder="Cooking Time" title="Cooking Time" class="form-control" id="cookingtime" name="cookingtime" value="<%- cookingtime %>" />
+            <input type="text" placeholder="Cooking Time" title="Cooking Time" class="form-control" id="cookingtime" name="cookingtime" value="<%- model.cookingtime %>" />
         </div>
 
         <div class="col-xs-4 col-md-2">
             <p class="control-label">Serves</p>
         </div>
         <div class="col-xs-8 col-md-2">
-            <input type="text" placeholder="Serves" title="Serves" class="form-control" id="serves" name="serves" value="<%- serves %>" />
+            <input type="text" placeholder="Serves" title="Serves" class="form-control" id="serves" name="serves" value="<%- model.serves %>" />
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-xs-12">
-            <input id='saveEditButton' type='button' value='Save' />
+            
             <input id="btnBack" type="button" value="Back" class="btn btn-primary" />
         </div>
     </div>
+
+    <div class="form-group align-center">
+        <button id="saveEditButton" type="button" class="btn btn-default" aria-label="Save">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
     <!--    -->
 </div>
 
