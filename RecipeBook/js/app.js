@@ -19,6 +19,9 @@
         },
         'bootstrap': {
             deps: ['jquery']
+        },
+        'pouchdb-3.1.0.min': {
+            exports: 'PouchDB'
         }
     }
 });
@@ -27,6 +30,7 @@ var app = app || {};
 
 require(['routers/router', 'components/dataService'], function (router, dataService) {
     $(document).ready(function () {
+
         dataService.getData();
         router.start();
     });

@@ -28,9 +28,9 @@
                 self.renderView.call(self, view);
             });
         },
-        country: function (id) {
+        country: function (_id) {
             var self = this;
-            var country = new Country(app.countries.get(id)).toJSON();
+            var country = new Country(app.countries.get(_id)).toJSON();
             
             app.header = new Header({ country: country.get('country'), imagePath: country.get('imagePath') });
             

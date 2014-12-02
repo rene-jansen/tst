@@ -9,8 +9,12 @@
         tpl                 = require('text!tpl/HeaderView.html');
 
     require('bootstrap');
+    //var PouchDB = require('pouchdb-3.1.0.min');
 
     return Backbone.View.extend({
+        initialize: function(){
+
+        },
         template: _.template(tpl),
         events: {
             'click #btnEditRecipe': 'editRecipe',
