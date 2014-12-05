@@ -14,7 +14,7 @@
         template: _.template(tpl),          
         render: function () {
             var templateArgs = {
-                model: this.model.toJSON(),
+                model: this.model.toJSON(),  //.toJSON()
                 countries: app.countries.toJSON()
             };
             this.$el.html(this.template(templateArgs));
@@ -26,10 +26,13 @@
         },
         updateRecipe: function (event) {
             event.preventDefault();
-            var r = '#/details/' + this.model.id;
+            
             if (this.model.set(this.getCurrentFormValues(), { validate: true })) {
-                dataService.saveData(app.recipes);                
-                Router.navigate(r, { trigger: true });                
+                var r = '#/details/' + this.model.get('_id');
+                    
+                dataService.saveData(this.model, function () {
+                    Router.navigate(r, { trigger: true });
+                });
             }
             else {
                 $('#validationError').addClass('alert alert-danger');                
@@ -51,6 +54,8 @@
         },
         getCurrentFormValues: function () {
             return {
+                _id: $('#_id').val(),
+                _rev: $('#_rev').val(),
                 name: $('#name').val(),
                 country: $('#country').val(),
                 category: $('#category').val(),

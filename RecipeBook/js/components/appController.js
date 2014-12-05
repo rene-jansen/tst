@@ -34,8 +34,8 @@
             
             app.header = new Header({ country: country.get('country'), imagePath: country.get('imagePath') });
             
-            dataService.setRecipes();
-            self.home();
+            dataService.setRecipes(function () { self.home(); });
+            
         },
         renderView: function(view) {
             this.currentView && this.currentView.remove();

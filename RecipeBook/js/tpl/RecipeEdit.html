@@ -5,16 +5,24 @@
     
 
     <div class="form-group">
+        <input type="hidden" id="_rev" name="_rev" value="<%- model._rev %>">
+        <input type="hidden" id="_id" name="_id" value="<%- model._id %>">
+
         <div class="col-xs-6 col-md-8">
             <input type="text" placeholder="Name" title="Name" class="form-control" id="name" name="name" value="<%- model.name %>" />
         </div>
         <div class="col-xs-3 col-md-2">
             
-            <select class="form-control" id="model.country" name="model.country">
-                <option selected="selected" value="1">Australia</option>
+            <select class="form-control" id="country" name="country">
+                <!-- <option selected="selected" value="1">Australia</option>  -->
 
                 <% _(countries).each(function(country) { %>
-                <option value="<%= country.country %>"><%= country.country %></option>
+
+                  <% if (country.country == model.country)  { %>
+                    <option selected="selected" value="<%= country.country %>"><%= country.country %></option>
+                  <% } else { %>
+                    <option value="<%= country.country %>"><%= country.country %></option>
+                  <% } %>
                 <% }); %>
             </select>
 

@@ -6,7 +6,8 @@
         _                   = require('underscore'),
         Backbone            = require('backbone'),
         EditView            = require('views/editView'),
-        Router              = require('routers/router'),
+        Router = require('routers/router'),
+        
         dataService         = require('components/dataService'),
         tpl                 = require('text!tpl/RecipeDetails.html');
 
@@ -23,7 +24,7 @@
             EnterKey: 13
         },
         initialize: function() {
-            this.listenTo(this.model, 'change', this.modelChanged);
+            //this.listenTo(this.model, 'change', this.modelChanged);
         },
         render: function () {
             
@@ -33,14 +34,47 @@
         },
         editRecipe: function(event) {
             var self = this;
-            var view = new EditView({ model: this.model, collection: app.countries });            
-            self.renderView.call(self, view);
+            // get latest version
+            dataService.getRecipe(this.model, function (r) {
+
+                var recipe = {};
+
+                recipe._id = r._id;
+                recipe._rev = r._rev;
+                recipe.name = r.name;
+                recipe.country = r.country;
+                recipe.category = r.category;
+                recipe.imagePath = r.imagePath;
+                recipe.description = r.description;
+                recipe.ingredient1 = r.ingredient1;
+                recipe.ingredient2 = r.ingredient2;
+                recipe.production = r.production;
+                recipe.author = r.author;
+                recipe.source = r.source;
+                recipe.preparationtime = r.preparationtime;
+                recipe.cookingtime = r.cookingtime;
+                recipe.serves = r.serves;
+
+
+
+                var name = r.name;
+                var view = new EditView({ model: app.recipe, collection: app.countries });
+                self.renderView.call(self, view);
+            });
         },
         deleteRecipe: function() {
             if (confirm('Are you sure you want to delete the Recipe?')) {
-                app.recipes.remove(this.model);
-                dataService.saveData(app.recipes);
-                Router.navigate('#/', { trigger: true });
+
+
+                // get latest version
+                dataService.getRecipe(this.model, function (r) {
+                    dataService.deleteData(app.recipe, function () {                        
+                        Router.navigate('#/', { trigger: true });
+                    });
+                    app.recipes.remove(app.recipe);
+                });
+
+
             }
         },
         createRecipe: function () {
