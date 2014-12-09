@@ -29,9 +29,8 @@
             var self = this,
             id;
             if(this.model.set(this.getCurrentFormValues(), {validate:true}))
-            {
-                id = ++app.recipeID;
-                this.model.set({ recipeID: id, id: id });
+            {                
+                this.model.set({ _id: new Date().toISOString() });
                 /*
                 $.proxy(this.handleImageFile(function () {
                     app.recipes.add(self.model);
@@ -39,9 +38,12 @@
                     Router.navigate('#/', {trigger: true});
                 }), this);
                 */
-                app.recipes.add(self.model);
-                dataService.saveData(app.recipes);
-                Router.navigate('#/', { trigger: true });
+
+                dataService.saveData(this.model, function () {
+                    Router.navigate('#/', { trigger: true });
+                });
+
+                app.recipes.add(self.model);                
 
             }
             else {

@@ -6,6 +6,9 @@ AppController) {
             'details/:id': 'details',
             'createRecipe': 'createRecipe',
             'selectcountry': 'selectcountry',
+            'rice': 'rice',
+            'starter': 'starter',
+            'category/:id': 'category',
             'country/:id': 'country'
         },
         initialize: function () {

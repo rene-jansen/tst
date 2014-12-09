@@ -19,7 +19,7 @@
                 <% _(countries).each(function(country) { %>
 
                   <% if (country.country == model.country)  { %>
-                    <option selected="selected" value="<%= country.country %>"><%= country.country %></option>
+                    <option selected="selected" value="<%= country.country %>"><%= country.country %>&nbsp;&#10004;</option>
                   <% } else { %>
                     <option value="<%= country.country %>"><%= country.country %></option>
                   <% } %>

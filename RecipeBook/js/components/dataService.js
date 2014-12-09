@@ -150,7 +150,7 @@
             db.put({
                 _id: 'au',  // http://www.1728.org/countries.htm
                 country: 'Australia',            
-                imagePath: 'img/australia.png'
+                imagePath: 'img/australia.png' // http://findicons.com/icon/32289/france?id=302888
             }).then(function () {
                 return db.put({
                     _id: 'br',
@@ -163,6 +163,85 @@
                     country: 'China',
                     imagePath: 'img/china.png'
                 });
+            }).then(function () {
+                return db.put({
+                    _id: 'fr',
+                    country: 'France',
+                    imagePath: 'img/france.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'de',
+                    country: 'Germany',
+                    imagePath: 'img/germany.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'gr',
+                    country: 'Greece',
+                    imagePath: 'img/greece.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'vn',
+                    country: 'Viet Nam',
+                    imagePath: 'img/viet_nam.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'in',
+                    country: 'India',
+                    imagePath: 'img/india.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'id',
+                    country: 'Indonesia',
+                    imagePath: 'img/indonesia.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'it',
+                    country: 'Italy',
+                    imagePath: 'img/italy.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'jp',
+                    country: 'Japan',
+                    imagePath: 'img/japan.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'nl',
+                    country: 'Netherlands',
+                    imagePath: 'img/netherlands.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'th',
+                    country: 'Thailand',
+                    imagePath: 'img/thailand.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'gb',
+                    country: 'United Kingdom',
+                    imagePath: 'img/united_kingdom.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'us',
+                    country: 'United States',
+                    imagePath: 'img/usa.png'
+                });
+            }).then(function () {
+                return db.put({
+                    _id: 'es',
+                    country: 'Spain',
+                    imagePath: 'img/spain.png'
+                });
+
             }).then(function () {
                 return db.allDocs({include_docs: true});
             }).then(function (response) {
@@ -352,7 +431,8 @@
         getData: function (cb) {
             var header = { country: 'Australia', imagePath: 'img/australia.png' };
             app.header = new Header(header);
-            
+            app.category = 'All';
+
             //var countries = 
             getCountriesFromCache(function (countries) {
                 var countryList = [];
@@ -365,9 +445,10 @@
 
             getRecipesFromCache(function (recipes) {
                 var recipeList = [],
-                    countryfilter = app.header.get('country');
+                    countryfilter = app.header.get('country'),
+                    categoryfilter = app.category;
                 recipes.rows.forEach(function (recipe) {
-                    if (countryfilter === recipe.doc.country) {
+                    if (countryfilter === recipe.doc.country && (categoryfilter === 'All' || categoryfilter === recipe.doc.category)) {
                         recipeList.push({ 
                             _id: recipe.doc._id,
                             _rev: recipe.doc._rev,
@@ -394,9 +475,10 @@
         setRecipes: function (cb) {
             setRecipes(function (recipes) {
                 var recipeList = [],
-                    countryfilter = app.header.get('country');
+                    countryfilter = app.header.get('country'),
+                    categoryfilter = app.category;
                 recipes.rows.forEach(function (recipe) {
-                    if (countryfilter === recipe.doc.country) {
+                    if (countryfilter === recipe.doc.country && (categoryfilter === 'All' || categoryfilter === recipe.doc.category)) {
                         recipeList.push({
                             _id: recipe.doc._id,
                             _rev: recipe.doc._rev,
